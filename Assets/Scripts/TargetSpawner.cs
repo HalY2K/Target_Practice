@@ -8,7 +8,7 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] GameObject TargetPrefab; // assign the target prefab to this variable in the Inspector
     [SerializeField] Bounds spawnableArea;
     
-    float spawnInterval = 1f;
+    float spawnInterval = 2f;
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
