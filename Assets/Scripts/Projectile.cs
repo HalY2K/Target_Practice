@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
             rb = GetComponent<Rigidbody>();
         }
     }
-    public float speed = 10f;
+    public float speed = 30f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,21 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Target target = FindObjectOfType<Target>();
+         transform.LookAt(target.transform);
         transform.position += transform.forward * speed * Time.deltaTime;
+    }
+
+    //destroy the projectile after 8 seconds
+    private void OnEnable()
+    {
+        StartCoroutine(DestroyAfterDelay());
+    }
+
+    private IEnumerator DestroyAfterDelay()
+    {
+        yield return new WaitForSeconds(8);
+        Destroy(gameObject);
     }
 
 }

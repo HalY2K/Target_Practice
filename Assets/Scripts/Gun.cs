@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] Transform projectileSpawnPoint;
     [SerializeField] GameObject projectilePrefab;
-
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
