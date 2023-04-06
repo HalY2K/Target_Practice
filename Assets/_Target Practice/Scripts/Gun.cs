@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField,FoldoutGroup("Dependencies")] Transform projectileSpawnPoint;
     [SerializeField,FoldoutGroup("Dependencies")] GameObject projectilePrefab;
+    [SerializeField] AudioSource shootSound;
     
     private void OnDrawGizmos()
     {
@@ -19,6 +20,7 @@ public class Gun : MonoBehaviour
     public void Shoot()
     {
         Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+        shootSound.Play();
     }
 
     private void Update()
