@@ -11,7 +11,7 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] GameObject[] TargetPrefabs;
     GameObject randomPrefab => TargetPrefabs[Random.Range(0, TargetPrefabs.Length)];
 
-    float spawnInterval = 2f;
+    public float spawnInterval = 5f;
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -27,7 +27,7 @@ public class TargetSpawner : MonoBehaviour
         if (spawnInterval <= 0)
         {
             Spawn();
-            spawnInterval = 1f;
+            spawnInterval = 5f;
         }
         
     }

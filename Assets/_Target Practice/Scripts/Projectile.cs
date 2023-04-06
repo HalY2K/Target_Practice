@@ -23,8 +23,8 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Target target = FindObjectOfType<Target>();
-        // if(target) transform.LookAt(target.transform);
+        Target target = FindObjectOfType<Target>();
+        if(target) transform.LookAt(target.transform);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 

@@ -17,6 +17,11 @@ public class Target : MonoBehaviour
 
     //referece to the ScoreManager script
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] GameManager gameManager;
+
+    private int hitCounter = 0;
+    
+
 
     // [SerializeField] float resetTime = 3f;
     // private bool isResetting = false;
@@ -32,6 +37,7 @@ public class Target : MonoBehaviour
     private void Awake()
     {
        scoreManager = FindObjectOfType<ScoreManager>();
+       gameManager = FindObjectOfType<GameManager>();
     }
     
     private void Update()
@@ -61,18 +67,20 @@ public class Target : MonoBehaviour
             rb.AddTorque(rot, ForceMode.Impulse);
 
             //add 1 point to the int score when the target is hit
-            AddPoint();
+            // AddPoint();
 
             //play the hit sound
             hitSound.Play();
-            
-            // rb.useGravity = true;
+
+            MultiHit();
         }
 
+        //destroy the target when it hits the environment
         if(((1<<collision.gameObject.layer) & environmentLayer) != 0)
         {
             Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            gameManager.takeDamage(1);
         }
 
     }
@@ -86,9 +94,22 @@ public class Target : MonoBehaviour
         }
     }
     
-    void AddPoint()
+    //count how many times the target is hit. If it is hit 3 times, destroy the target. Each time the taget is hit increment the hit counter by 1
+    private void MultiHit()
     {
-        scoreManager.AddScore(1);
+        hitCounter++;
+        Debug.Log(hitCounter);
+        scoreManager.AddScore(hitCounter);
+        if (hitCounter >= 3)
+        {
+            Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
+
+    // void AddPoint()
+    // {
+    //     // scoreManager.AddScore(1);
+    // }
 
 }
