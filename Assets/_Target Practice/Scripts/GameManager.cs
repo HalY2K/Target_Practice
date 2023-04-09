@@ -5,6 +5,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public GameStats[] history;
    public int life = 10;
    public int levelCounter = 0;
 

@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStats : MonoBehaviour
+[System.Serializable]
+public class GameStats
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int score;
+    [SerializeField] int highestHitStreak;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
