@@ -20,6 +20,7 @@ public class Target : MonoBehaviour
     [SerializeField] GameManager gameManager;
 
     private int hitCounter = 0;
+    private int levelCounter = 0;
     
 
 
@@ -104,12 +105,18 @@ public class Target : MonoBehaviour
         {
             Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            levelCounter++;
+            //if the level counter is 10, increase the level by 1, reset the level counter to 0 and reset the hit counter to 0, and decrease the spawn rate by 1
+            if (levelCounter >= 10)
+            {
+                gameManager.IncreaseLevel();
+                levelCounter = 0;
+                hitCounter = 0;
+                gameManager.DecreaseSpawnRate();
+            }
         }
     }
 
-    // void AddPoint()
-    // {
-    //     // scoreManager.AddScore(1);
-    // }
+   
 
 }

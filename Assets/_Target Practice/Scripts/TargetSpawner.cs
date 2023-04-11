@@ -9,6 +9,7 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] Bounds spawnableArea;
     
     [SerializeField] GameObject[] TargetPrefabs;
+    [SerializeField] GameManager gameManager;
     GameObject randomPrefab => TargetPrefabs[Random.Range(0, TargetPrefabs.Length)];
 
     public float spawnInterval = 5f;
@@ -19,6 +20,11 @@ public class TargetSpawner : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(spawnableArea.center, 0.5f);
     }
+
+    // private void Start()
+    // {
+    //     gameManager = FindObjectOfType<GameManager>();
+    // }
 
     void Update()
     {

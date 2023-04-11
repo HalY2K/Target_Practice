@@ -23,8 +23,9 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Target target = FindObjectOfType<Target>();
-        if(target) transform.LookAt(target.transform);
+        //zDebug look for target
+        // Target target = FindObjectOfType<Target>();  
+        // if(target) transform.LookAt(target.transform);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
@@ -36,7 +37,7 @@ public class Projectile : MonoBehaviour
 
     private IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(6);
         Destroy(gameObject);
     }
 

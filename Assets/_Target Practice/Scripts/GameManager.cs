@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TargetSpawner targetSpawner;
 
-
     [SerializeField] TMP_Text lifeText;
 
     // Start is called before the first frame update
@@ -44,6 +43,8 @@ public class GameManager : MonoBehaviour
     {
         targetSpawner.spawnInterval -= 1f;
     }
+
+    
 
 
 }

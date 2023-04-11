@@ -8,7 +8,6 @@ public class Gun : MonoBehaviour
     [SerializeField,FoldoutGroup("Dependencies")] Transform projectileSpawnPoint;
     [SerializeField,FoldoutGroup("Dependencies")] GameObject projectilePrefab;
     [SerializeField] AudioSource shootSound;
-    [SerializeField] ParticleSystem smoke;
     [SerializeField] ParticleSystem muzzleFlash;
     
     private void OnDrawGizmos()
@@ -23,10 +22,9 @@ public class Gun : MonoBehaviour
     {
         Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
         shootSound.Play();
-        smoke.Play();
+        //smoke.Play();
         muzzleFlash.Play();
     }
-
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
